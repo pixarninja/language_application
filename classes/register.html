@@ -22,10 +22,6 @@
     <script>
       function updateUser() {
         value = localStorage.getItem('log_status');
-        if(typeof value == 'undefined') {
-          localStorage.setItem('log_status',0);
-          value = '0';
-        }
         document.getElementById("navbarLoggedOut").style.display = "none";
         document.getElementById("navbarLoggedIn").style.display = "none";
         switch(value) {
@@ -35,6 +31,9 @@
         case '1':
           document.getElementById("navbarLoggedIn").style.display = "block";
           break;
+        default:
+          document.getElementById("navbarLoggedOut").style.display = "block";
+          localStorage.setItem('log_status',0);
         }
       }
     </script>

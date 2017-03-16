@@ -97,11 +97,9 @@
     <div id=content>
     <!-- Add content here -->
       <center>
-      <form id=loginForm >
-        <input type="text" name="username" value="User Name">
-        <input type="text" name="password" value="Password">
-        <input type="submit" value="Log In" onclick="localStorage.setItem('log_status',1); window.open('./classes')">
-      </form>
+      <input type="text" name="username" value="User Name">
+      <input type="password" name="password" value="Password">
+      <input type="submit" value="Log In" onclick="localStorage.setItem('log_status',1);location.href = './classes/my_classes.html';">
       <h3>Don't have an account with us?</h3>
       <button onlick="window.open('#')">Register</button>
       </center>
