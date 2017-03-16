@@ -19,22 +19,27 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script>
-      function updateUser(value) {
+      function updateUser() {
+        value = localStorage.getItem('log_status');
+        if(typeof value == 'undefined') {
+          localStorage.setItem('log_status',0);
+          value = 0;
+        }
         document.getElementById("navbarLoggedOut").style.display = "none";
         document.getElementById("navbarLoggedIn").style.display = "none";
         switch(value) {
-        case 0:
+        case '0':
           document.getElementById("navbarLoggedOut").style.display = "block";
           break;
-        case 1:
+        case '1':
           document.getElementById("navbarLoggedIn").style.display = "block";
           break;
         }
       }
     </script>
   </head>
-  <body onload=updateUser(0)>
-    <div id=navbarLoggedIn>
+  <body onload="updateUser()">
+    <div id=navbarLoggedIn style="display:none;">
       <img height="100px" width="100%" src="http://twitrheaders.com/wp-content/uploads/2014/05/Cosmic-Planets.jpg">
       <nav id=main_menu class="navbar navbar-default"><div class=container>
         <div class="navbar-header">
@@ -50,14 +55,19 @@
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Classes</a>
               <ul class="dropdown-menu">
-                <li><a href="#">My Classes</a></li>
-                <li><a href="#">Register</a></li>
+                <li><a href="./classes/my_classes.html">My Classes</a></li>
+                <li><a href="./classes/register.html">Register</a></li>
               </ul>
             </li>
-            <li><a href="#">Scenes</a></li>
-            <li><a href="#">Progress</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Log Out</a></li>
+            <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Scenes</a>
+              <ul class="dropdown-menu">
+                <li><a href="./scenes/create.html">Create</a></li>
+                <li><a href="./scenes/browse.html">Browse</a></li>
+              </ul>
+            </li>
+            <li><a href="./progress.html">Progress</a></li>
+            <li><a href="./contact_us.html">Contact Us</a></li>
+            <li><a onclick="localStorage.setItem('log_status', 0);" href="./index.html">Log Out</a></li>
           </ul>
         </div>
       </div></nav>
@@ -76,9 +86,9 @@
         </div>
         <div class="collapse navbar-collapse" id="nav_logged_out">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Try it Out</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Log In</a></li>
+            <li><a href="./try_it_out.html">Try it Out</a></li>
+            <li><a href="./contact_us.html">Contact Us</a></li>
+            <li><a href="./log_in.html">Log In</a></li>
           </ul>
         </div>
       </div></nav>
