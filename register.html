@@ -97,22 +97,32 @@
     <div id=content>
     <!-- Add content here -->
       <center>
-      <h1>Log In</h1>
+      <h1>Register</h1>
+
       <table>
         <tr>
           <td>User Name:</td>
-          <td><input type="text" name="username" value="User Name"></td>
+          <td><input type="text" name="username" value=""></td>
         </tr>
         <tr>
           <td>Password:</td>
-          <td><input type="password" name="password" value="Password"></td>
+          <td><input type="password" name="password" value=""></td>
         </tr>
         <tr>
-          <td colspan="2"><center><input type="submit" value="Log In" onclick="localStorage.setItem('log_status',1);location.href = './classes/my_classes.html';"></center></td>
+          <td>Confirm Password:</td>
+          <td><input type="password" name="password" value=""></td>
+        </tr>
+        <tr>
+          <td>Status:</td>
+          <td><input type="radio" name="status" value="Student">Student<br/>
+            <input type="radio" name="status" value="Teacher">Teacher</td>
+        </tr>
+        <tr>
+          <td colspan="2"><center><input type="submit" value="Create Account" onclick="localStorage.setItem('log_status',1);location.href = './classes/my_classes.html';"></center></td>
         </tr>
       </table>
-      <h3>Don't have an account with us?</h3>
-      <input type="submit" value="Register" onclick="location.href='./register.html';">
+      <h3>Already have an account with us?</h3>
+      <input type="submit" value="Log In" onclick="location.href='./log_in.html';">
       </center>
 
     </div>
