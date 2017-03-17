@@ -1,9 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
-
-
+    <script>
+      scene = 0;
+      num_scenes = 3;
+      function change_scene(dir) {
+        switch(dir) {
+        case 0:
+          scene --;
+          break;
+        case 1:
+          scene ++;
+          break;
+        }
+        scene = (scene + num_scenes)%num_scenes;
+        switch(scene) {
+        case 0:
+          document.getElementById('scene').src = '../images/patio.jpg';
+          document.getElementById('sceneTitle').innerHTML = 'Patio';
+          document.getElementById('left').style.visibility = 'hidden';
+          document.getElementById('right').style.visibility = 'visible';
+          break;
+        case 1:
+          document.getElementById('scene').src = '../images/kitchen.png';
+          document.getElementById('sceneTitle').innerHTML = 'Kitchen';
+          document.getElementById('right').style.visibility = 'visible';
+          document.getElementById('left').style.visibility = 'visible';
+          break;
+        case 2:
+          document.getElementById('scene').src = '../images/living_room.jpg';
+          document.getElementById('sceneTitle').innerHTML = 'Living Room';
+          document.getElementById('right').style.visibility = 'hidden';
+          document.getElementById('left').style.visibility = 'visible';
+          break; 
+ 
+        }
+      }
+    </script>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -104,9 +137,9 @@
     <center><h1>View Scene: <span id="sceneTitle">Patio</span></h1>
     <table>
       <tr>
-        <td rowspan="2"><img src="../images/left.png" height="250" width="75"></td>
-        <td colspan="2"><img style="margin-left:10px;margin-right:10px;" src="../images/patio.jpg" height=450 width=450></td>
-        <td rowspan="2"><img id="scene" src="../images/left.png" style="-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:'FlipH';-ms-filter:'FlipH';" height="250" width="75"></td>
+        <td rowspan="2"><img id='left' onclick='change_scene(0)' style='visibility:hidden;' src="../images/left.png" height="250" width="75"></td>
+        <td colspan="2"><img id='scene' style="margin-left:10px;margin-right:10px;" src="../images/patio.jpg" height=450 width=600></td>
+        <td rowspan="2"><img id='right' onclick='change_scene(1)' src="../images/left.png" style="-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:'FlipH';-ms-filter:'FlipH';" height="250" width="75"></td>
       </tr>
       <tr>
         <td style="margin-left:10px;margin-right:10px;text-align:left;">
