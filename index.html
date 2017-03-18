@@ -19,6 +19,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <link href="css/home.css" rel="stylesheet">
     <script>
       function updateUser() {
         value = localStorage.getItem('log_status');
@@ -39,8 +40,8 @@
     </script>
   </head>
   <body onload="updateUser()">
+    <div id="banner"></div>
     <div id=navbarLoggedIn style="display:none;">
-      <img height="180px" width="100%" src="./banner180px.jpg">
       <nav id=main_menu class="navbar navbar-default"><div class=container>
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -73,7 +74,6 @@
       </div></nav>
     </div>
     <div id=navbarLoggedOut>
-      <img height="180px" width="100%" src="./banner180px.jpg">
       <nav id=main_menu class="navbar navbar-default"><div class=container>
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">

@@ -1,0 +1,27 @@
+body {
+  padding-top: 180px;
+}
+
+div#banner {
+  position:absolute;
+  top:0px;
+  left:0px;
+  height:180px;
+  width:100%;
+  background: url("../images/banner180px.jpg") no-repeat left center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
+#header {
+
+}
+#content {
+  margin-left:30px;
+  margin-right:30px;
+}
+#footer {
+
+}
