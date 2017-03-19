@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Progress Report</title>
  
+    <script>
+    function Spanish() {
+      document.getElementById('vocab').src = './images/spanish_vocab_graph.png';
+      document.getElementById('quiz').src = './images/spanish_quiz_graph.png';
+    }
+    function French() {
+      document.getElementById('vocab').src = './images/french_vocab_graph.png';
+      document.getElementById('quiz').src = './images/french_quiz_graph.png';
+    }
+ 
+    </script>
+
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
@@ -95,16 +108,30 @@
     </div>
     <div id=content>
     <!-- Add content here -->
-
-
-
-
-
-
-
-
-
-
+    <center>
+      <h1>Progress</h1>
+      <table style="margin-left:50px;margin-right:50px;">
+        <tr>
+          <td width="50%"></td>
+          <td width="50%"></td>
+        </tr>
+        <tr>
+          <td colspan='2'><center>
+            <h3 style="vertical-align:text-top; text-align:center;display:inline;">My Languages:</h3>
+            <input type="submit" value="Spanish" style="font-size:1.5em;" onclick=Spanish();>
+            <input type="submit" value="French" style="font-size:1.5em;" onclick=French();>
+          </center></td>
+        </tr>
+        <tr>
+          <td colspan="1"><center><img src='./images/spanish_vocab_graph.png' height='400px' id="vocab"></center></td>
+          <td colspan="1"><center><img src='./images/spanish_quiz_graph.png' height='400px' id="quiz"></center></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align:center">Want to see your progress for a specific class? See <a href='./classes/student/my_classes.html'>My Classes</a>.</td>
+        <tr>
+ 
+      </table>
+    </center>
     </div>
     <div id=footer></div>
   </body>
