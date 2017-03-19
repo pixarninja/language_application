@@ -3,6 +3,7 @@
   <head>
     <link href="../css/other.css" rel="stylesheet">
     <script>
+      rate = [0, 0, 0];
       scene = 0;
       num_scenes = 3;
       function change_scene(dir) {
@@ -21,22 +22,45 @@
           document.getElementById('sceneTitle').innerHTML = 'Patio';
           document.getElementById('left').style.visibility = 'hidden';
           document.getElementById('right').style.visibility = 'visible';
+          updateRate(rate[0]);
           break;
         case 1:
           document.getElementById('scene').src = '../images/kitchen.png';
           document.getElementById('sceneTitle').innerHTML = 'Kitchen';
           document.getElementById('right').style.visibility = 'visible';
           document.getElementById('left').style.visibility = 'visible';
+          updateRate(rate[1]);
           break;
         case 2:
           document.getElementById('scene').src = '../images/living_room.jpg';
           document.getElementById('sceneTitle').innerHTML = 'Living Room';
           document.getElementById('right').style.visibility = 'hidden';
           document.getElementById('left').style.visibility = 'visible';
+          updateRate(rate[2]);
           break; 
  
         }
       }
+      function  updateRate(num) {
+            rate[scene] = num;
+            document.getElementById("rate5").style.backgroundColor = "white";
+            document.getElementById("rate4").style.backgroundColor = "white";
+            document.getElementById("rate3").style.backgroundColor = "white";
+            document.getElementById("rate2").style.backgroundColor = "white";
+            document.getElementById("rate1").style.backgroundColor = "white";
+            switch(num) {
+            case 5:
+                document.getElementById("rate5").style.backgroundColor = "yellow";
+            case 4:
+                document.getElementById("rate4").style.backgroundColor = "yellow";
+            case 3:
+                document.getElementById("rate3").style.backgroundColor = "yellow";
+            case 2:
+                document.getElementById("rate2").style.backgroundColor = "yellow";
+            case 1:
+                document.getElementById("rate1").style.backgroundColor = "yellow";
+            }
+        }
     </script>
 
     <meta charset="utf-8">
@@ -154,11 +178,11 @@
         <td width="175" style="text-align: right;">Rate this Scene:</td>
         <td width="275">
           <center><table><tr>
-            <td id="rate1"></td>
-            <td id="rate2"></td>
-            <td id="rate3"></td>
-            <td id="rate4"></td>
-            <td id="rate5"></td>
+            <td id="rate1" onclick=updateRate(1);></td>
+            <td id="rate2" onclick=updateRate(2);></td>
+            <td id="rate3" onclick=updateRate(3);></td>
+            <td id="rate4" onclick=updateRate(4);></td>
+            <td id="rate5" onclick=updateRate(5);></td>
           </tr></table></centeR>
         </td>
       </tr>
