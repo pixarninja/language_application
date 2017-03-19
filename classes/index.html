@@ -1,3 +1,116 @@
 <!DOCTYPE html>
-<body onload="location.href = './my_classes.html'">
-</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Classes Overview</title>
+ 
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]--> 
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <link href="../css/other.css" rel="stylesheet">
+    <script>
+      function updateUser() {
+        value = localStorage.getItem('log_status');
+        document.getElementById("navbarLoggedOut").style.display = "none";
+        document.getElementById("navbarLoggedIn").style.display = "none";
+        switch(value) {
+        case '0':
+          document.getElementById("navbarLoggedOut").style.display = "block";
+          break;
+        case '1':
+          document.getElementById("navbarLoggedIn").style.display = "block";
+          break;
+        default:
+          document.getElementById("navbarLoggedOut").style.display = "block";
+          localStorage.setItem('log_status',0);
+        }
+      }
+    </script>
+  </head>
+  <body onload="updateUser()">
+    <div id="banner"></div>
+    <div id=navbarLoggedIn style="display:none;">
+      <nav id=main_menu class="navbar navbar-default"><div class=container>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Dabble</a>
+        </div>
+        <div class="collapse navbar-collapse" id="nav_logged_in">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Classes</a>
+              <ul class="dropdown-menu">
+                <li><a href="../classes/my_classes.html">My Classes</a></li>
+                <li><a href="../classes/register.html">Register</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Scenes</a>
+              <ul class="dropdown-menu">
+                <li><a href="../scenes/create.html">Create</a></li>
+                <li><a href="../scenes/browse.html">Browse</a></li>
+              </ul>
+            </li>
+            <li><a href="../progress.html">Progress</a></li>
+            <li><a href="../contact_us.html">Contact Us</a></li>
+            <li><a onclick="localStorage.setItem('log_status', 0);" href="../index.html">Log Out</a></li>
+          </ul>
+        </div>
+      </div></nav>
+    </div>
+    <div id=navbarLoggedOut>
+      <nav id=main_menu class="navbar navbar-default"><div class=container>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Dabble</a>
+        </div>
+        <div class="collapse navbar-collapse" id="nav_logged_out">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../try_it_out.html">Try it Out</a></li>
+            <li><a href="../contact_us.html">Contact Us</a></li>
+            <li><a href="../log_in.html">Log In</a></li>
+          </ul>
+        </div>
+      </div></nav>
+    </div>
+    <div id=content>
+    <!-- Add content here -->
+    <center>
+    <h1>Classes</h1>
+    <table>
+      <tr>
+        <td><img onclick="location.href='./student/';" src="../images/student.png"></td>
+        <td><img onclick="location.href='./teacher/';" src="../images/teacher.png"></td>
+      </tr>
+    </table>
+
+    </center>
+
+
+
+
+
+    </div>
+    <div id=footer></div>
+  </body>
+</html>
