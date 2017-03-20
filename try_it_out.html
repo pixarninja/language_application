@@ -43,22 +43,22 @@
       }
       function  updateRate(num) {
             rate[scene] = num;
-            document.getElementById("rate5").style.backgroundColor = "white";
-            document.getElementById("rate4").style.backgroundColor = "white";
-            document.getElementById("rate3").style.backgroundColor = "white";
-            document.getElementById("rate2").style.backgroundColor = "white";
-            document.getElementById("rate1").style.backgroundColor = "white";
+            document.getElementById("rate5").style.background = "url(./images/rate_off.png)";
+            document.getElementById("rate4").style.background = "url(./images/rate_off.png)";
+            document.getElementById("rate3").style.background = "url(./images/rate_off.png)";
+            document.getElementById("rate2").style.background = "url(./images/rate_off.png)";
+            document.getElementById("rate1").style.background = "url(./images/rate_off.png)";
             switch(num) {
             case 5:
-                document.getElementById("rate5").style.backgroundColor = "yellow";
+                document.getElementById("rate5").style.background = "url(./images/rate_on.png)";
             case 4:
-                document.getElementById("rate4").style.backgroundColor = "yellow";
+                document.getElementById("rate4").style.background = "url(./images/rate_on.png)";
             case 3:
-                document.getElementById("rate3").style.backgroundColor = "yellow";
+                document.getElementById("rate3").style.background = "url(./images/rate_on.png)";
             case 2:
-                document.getElementById("rate2").style.backgroundColor = "yellow";
+                document.getElementById("rate2").style.background = "url(./images/rate_on.png)";
             case 1:
-                document.getElementById("rate1").style.backgroundColor = "yellow";
+                document.getElementById("rate1").style.background = "url(./images/rate_on.png)";
             }
         }
     </script>
@@ -161,9 +161,9 @@
     <center><h1>View Scene: <span id="sceneTitle">Patio</span></h1>
     <table>
       <tr>
-        <td rowspan="2"><img id='left' onclick='change_scene(0)' style='visibility:hidden;' src="./images/left.png" height="250" width="75"></td>
+        <td rowspan="2"><img id='left' onclick='change_scene(0)' style='visibility:hidden;' src="./images/left.png" height="75" width="75"></td>
         <td colspan="2"><img id='scene' style="margin-left:10px;margin-right:10px;" src="./images/patio.jpg" height=450 width=600></td>
-        <td rowspan="2"><img id='right' onclick='change_scene(1)' src="./images/left.png" style="-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:'FlipH';-ms-filter:'FlipH';" height="250" width="75"></td>
+        <td rowspan="2"><img id='right' onclick='change_scene(1)' src="./images/left.png" style="-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:'FlipH';-ms-filter:'FlipH';" height="75" width="75"></td>
       </tr>
       <tr>
         <td style="margin-left:10px;margin-right:10px;text-align:left;">
@@ -177,9 +177,13 @@
         <td width="275">
           <center><table><tr>
             <td id="rate1" onclick=updateRate(1);></td>
+            <td id="fill"></td>
             <td id="rate2" onclick=updateRate(2);></td>
+            <td id="fill"></td>
             <td id="rate3" onclick=updateRate(3);></td>
+            <td id="fill"></td>
             <td id="rate4" onclick=updateRate(4);></td>
+            <td id="fill"></td>
             <td id="rate5" onclick=updateRate(5);></td>
           </tr></table></centeR>
         </td>
@@ -196,9 +200,13 @@
 
     <style>
       #rate1, #rate2, #rate3, #rate4, #rate5 {
-        border:1px black solid;
+        background: url(./images/rate_off.png);
+        width: 20px;
+        height: 20px;
+      }
+      #fill {
         background-color: white;
-        width: 40px;
+        width: 10px;
         height: 20px;
       }
     </style>
