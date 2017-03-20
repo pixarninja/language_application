@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link href="../css/other.css" rel="stylesheet">
+
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Create a Scene</title>
+    <title>Create Scene</title>
  
     <!-- Bootstrap -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +22,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../js/bootstrap.min.js"></script>
-    <link href="../css/other.css" rel="stylesheet">
     <script>
       function updateUser() {
         value = localStorage.getItem('log_status');
@@ -38,6 +40,7 @@
         }
       }
     </script>
+
   </head>
   <body onload="updateUser()">
     <div id="banner"></div>
@@ -96,16 +99,45 @@
     <div id=content>
     <!-- Add content here -->
 
+    <center><h1>Create Scene</span></h1>
+    <table>
+      <tr>
+        <td colspan="3">
+          <img height=450 width=600 border="2px black solid">
+          <!--<svg id='scene' style="margin-left:10px;margin-right:10px;"
+               height=450 width=600 border="2px black solid"
+                xmlns='http://www.w3.org/2000/svg'>
+          </svg>-->
+        </td>
+      </tr>
+      <tr>
+        <td style="margin-left:10px;margin-right:10px;text-align:left;width:180px;"><center>
+          <input type="submit" value="Add Object" style="margin:5px;">
+        </center></td>
+        <td style="margin-left:10px;margin-right:10px;text-align:left;width:180px;"><center>
+          <input type="submit" value="Name Scene" style="margin:5px;">
+        </center></td>
+        <td style="margin-left:10px;margin-right:10px;text-align:right;width:180px;"><center>
+          <input type="submit" value="Save" style="margin:5px;">
+        </center></td>
+      </tr>
+    </table>
+    </center>
 
 
 
 
-
-
-
-
-
-    </div>
+    </div><br/><br/>
     <div id=footer></div>
+
+
+    <style>
+      #rate1, #rate2, #rate3, #rate4, #rate5 {
+        border:1px black solid;
+        background-color: white;
+        width: 40px;
+        height: 20px;
+      }
+    </style>
   </body>
 </html>
