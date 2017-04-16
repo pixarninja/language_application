@@ -21,6 +21,13 @@
     <script src="../js/bootstrap.min.js"></script>
     <link href="../css/other.css" rel="stylesheet">
     <script>
+      //function check_skip() {
+        user = localStorage.getItem('username');
+        if (user == "testteacher")
+          location.href="./teacher/my_classes.html";
+        else if (user == "teststudent")
+          location.href="./student";
+      //}
       function updateUser() {
         value = localStorage.getItem('log_status');
         document.getElementById("navbarLoggedOut").style.display = "none";
