@@ -23,9 +23,10 @@
     <script>
       user = localStorage.getItem('username');
       if (user == "testteacher")
-        location.href = "./teacher/register.html";
-      if (user == "teststudent")
+        location.href = "./teacher/create_class1.html";
+      if (user == "teststudent") {
         location.href = "./student/register.html";
+      }
       function updateUser() {
         value = localStorage.getItem('log_status');
         document.getElementById("navbarLoggedOut").style.display = "none";
@@ -101,7 +102,7 @@
     <div id=content>
     <!-- Add content here -->
     <center>
-    <h1>My Classes</h1>
+    <h1>Register for/Create a Class</h1>
     <table>
       <tr>
         <td><img onclick="location.href='./student/register.html';" src="../images/student.png"></td>
