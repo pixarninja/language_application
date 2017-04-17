@@ -2,11 +2,22 @@
 <html lang="en">
   <head>
     <link href="../css/other.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    </script>
     <script>
       rate = [0, 0, 0];
       found = [false, false, false];
       scene = 0;
       num_scenes = 3;
+      function find(event) {
+        //console.log(event);
+
+	// This is covered at the bottom of the page
+      }
+      function prep() {
+        console.log('yolo');
+      }
+
       function vocab_list() {
         switch(scene) {
         case 0:
@@ -122,7 +133,7 @@
     </script>
 
   </head>
-  <body onload="updateUser()">
+  <body onload="updateUser();prep();">
     <div id="banner"></div>
     <div id=navbarLoggedIn style="display:none;">
       <nav id=main_menu class="navbar navbar-default"><div class=container>
@@ -183,7 +194,7 @@
     <table>
       <tr>
         <td rowspan="2"><img id='left' onclick='change_scene(0)' style='visibility:hidden;' src="../images/left.png" height="75" width="75"></td>
-        <td colspan="2"><img id='scene' style="margin-left:10px;margin-right:10px;" src="../images/patio.jpg" height=450 width=600></td>
+        <td colspan="2"><img id='scene' onclick="find(event);" style="margin-left:10px;margin-right:10px;" src="../images/patio.jpg" height=450 width=600></td>
         <td rowspan="2"><img id='right' onclick='change_scene(1)' src="../images/left.png" style="-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:'FlipH';-ms-filter:'FlipH';" height="75" width="75"></td>
       </tr>
       <tr>
@@ -229,5 +240,30 @@
         height: 20px;
       }
     </style>
+
+    <script>
+ $(document).ready(function () {
+
+    $('#scene').on('click', function(e){
+          image = $('img#scene');
+
+          x = e.pageX - image.offset().left;
+          y = e.pageY - image.offset().top;
+          console.log(x + ", " + y);
+
+          console.log("Scene " + scene);
+          if(scene == 0) {
+            if( ((x < 250 && x > 100) && (y < 300 && y > 200)) || ((x > 300 && x < 450) && (y > 220 && y < 430))) {
+              alert("Escalera:: Stairs");
+              found[0] = true;
+            }
+	  }
+
+    });
+});
+
+    </script>
+
+
   </body>
 </html>
