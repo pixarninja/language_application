@@ -4,8 +4,29 @@
     <link href="../css/other.css" rel="stylesheet">
     <script>
       rate = [0, 0, 0];
+      found = [false, false, false];
       scene = 0;
       num_scenes = 3;
+      function vocab_list() {
+        switch(scene) {
+        case 0:
+          alert("Vocabulary left to find: Escalera");
+          break;
+        case 1:
+          alert("Vocabulary left to find: Horno");
+          break;
+        case 2:
+          alert("Vocabulary left to find: Almohada");
+        }
+      }
+      function take_quiz() {
+        if (found[0] == false || found [1] == false || found[2] == false) {
+          alert("You have not found all of the vocabulary to continue.");
+        }
+	else {
+          location.href="./quiz.html";
+        }
+      }
       function change_scene(dir) {
         switch(dir) {
         case 0:
@@ -167,10 +188,10 @@
       </tr>
       <tr>
         <td style="margin-left:10px;margin-right:10px;text-align:left;">
-          <input type="submit" value="Vocabulary List" style="margin:5px;">
+          <input type="submit" onClick='vocab_list()' value="Vocabulary Left" style="margin:5px;">
         </td>
         <td style="margin-left:10px;margin-right:10px;text-align:right;">
-          <input type="submit" value="Take Quiz" style="margin:5px;">
+          <input onclick="take_quiz()" type="submit" value="Take Quiz" style="margin:5px;">
         </td>
       </tr>
       <tr>
