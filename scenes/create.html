@@ -23,6 +23,10 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../js/bootstrap.min.js"></script>
     <script>
+      truev = [];
+      vocab = [];
+      vocab[0] = "NONE";
+      truev[0] = "NONE";
       function updateUser() {
         value = localStorage.getItem('log_status');
         document.getElementById("navbarLoggedOut").style.display = "none";
@@ -37,6 +41,17 @@
         default:
           document.getElementById("navbarLoggedOut").style.display = "block";
           localStorage.setItem('log_status',0);
+        }
+      }
+      function deltaVocab(num) {
+        tmp = confirm("The current vocab is " + vocab[num] + ": " + truev[num] + ". Would you like to change it?");
+        console.log(tmp);
+        while ( tmp == true) {
+          tmp2 = prompt("Enter the new vocabulary word (english):");
+          vocab[num] = tmp2;
+          tmp2 = prompt("Enter the new vocabulary word (spanish):");
+          truev[num] = tmp2;
+          tmp = confirm("The current vocab is " + vocab[num] + ": " + truev[num] +  ". Would you like to change it?");
         }
       }
     </script>
@@ -159,7 +174,7 @@
                 }
                 
             ]]> </script>
-            <image class="draggable" x="100" y="200" height="100" transform="matrix(1 0 0 1 0 0)" xlink:href="sofa.png" onmousedown="selectElement(evt)">     
+            <image ondblclick="deltaVocab(0);" class="draggable" x="100" y="200" height="100" transform="matrix(1 0 0 1 0 0)" xlink:href="sofa.png" onmousedown="selectElement(evt)">     
                  
         </svg>
 
