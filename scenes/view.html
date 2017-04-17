@@ -253,11 +253,26 @@
 
           console.log("Scene " + scene);
           if(scene == 0) {
-            if( ((x < 250 && x > 100) && (y < 300 && y > 200)) || ((x > 300 && x < 450) && (y > 220 && y < 430))) {
+            if( ((x < 250 && x > 100) && (y < 300 && y > 200)) || ((x >250 && x < 450) && (y > 220 && y < 430))) {
               alert("Escalera:: Stairs");
               found[0] = true;
             }
 	  }
+
+          if(scene == 1) {
+            if(((x > 200 && x < 330) && (y > 280 && y < 405))) {
+              alert("Horno:: Oven");
+              found[1] = true;
+            }
+          }
+
+          if (scene == 2) {
+            if(((x > 210 && x < 275) && (y > 200 && y < 260)) || ((x > 340 && x < 385)&& (y > 200 && y < 260))) {
+              alert("Almohada:: Pillow");
+              found[2] = true;
+            }
+
+          }
 
     });
 });
