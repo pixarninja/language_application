@@ -38,6 +38,37 @@
           break;
         }
       }
+      function logIn(user, pass) {
+        if(user == "testteacher") {
+          console.log("Teacher pass check: " + pass);
+          if (pass == "aloha") {
+            localStorage.setItem('log_status',1);
+            localStorage.setItem('username', user);
+            location.href = './classes/index.html';
+          }
+          else {
+            document.getElementById('input_error').innerHTML = "Incorrect username or password. Please try again.";
+          }
+        } else if( user == "teststudent") {
+          console.log("Student pass check: " + pass);
+          if(pass == "AdaLovelace") {
+            localStorage.setItem('log_status',1);
+            localStorage.setItem('username', user);
+            location.href = './classes/index.html';
+          }
+          else {
+            document.getElementById('input_error').innerHTML = "Incorrect username or password. Please try again.";
+          }
+        }
+        else if (user == "goahead") {
+          localStorage.setItem('log_status',1);
+          localStorage.setItem('username', user);
+          location.href = './classes/index.html'; 
+        }
+        else {
+          document.getElementById('input_error').innerHTML = "Incorrect username or password. Please try again.";
+        }
+      }
     </script>
   </head>
   <body onload="updateUser()">
@@ -105,12 +136,13 @@
         </tr>
         <tr>
           <td>Password:</td>
-          <td><input type="password" name="password" value="Password"></td>
+          <td><input type="password" name="password" value="Password" id="passw"></td>
         </tr>
         <tr>
-          <td colspan="2"><center><input type="submit" value="Log In" onclick="localStorage.setItem('log_status',1);localStorage.setItem('username', document.getElementById('usern').value);location.href = './classes/index.html';"></center></td>
+          <td colspan="2"><center><input type="submit" value="Log In" onclick='logIn(document.getElementById("usern").value, document.getElementById("passw").value)'></center></td>
         </tr>
       </table>
+      <div id="input_error" style="background:red"></div>
       <h3>Don't have an account with us?</h3>
       <input type="submit" value="Register" onclick="location.href='./register.html';">
       </center>
