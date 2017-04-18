@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="../../css/other.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    </script>
+    <script>
+      rate = [0, 0, 0];
+      found = [false, [false, false], false];
+      scene = 0;
+      num_scenes = 3;
+      function find(event) {
+
+	// This is covered at the bottom of the page
+      }
+      function prep() {
+        console.log('yolo');
+      }
+
+      function vocab_list() {
+        switch(scene) {
+        case 0:
+          alert("Vocabulary left to find: Escalera");
+          break;
+        case 1:
+          alert("Vocabulary left to find: Horno and Lavabo");
+          break;
+        case 2:
+          alert("Vocabulary left to find: Almohada");
+        }
+      }
+      function take_quiz() {
+        if (found[0] == false || found [1][0] == false || found[1][1] == false || found[2] == false) {
+          alert("You have not found all of the vocabulary to continue.");
+        }
+	else {
+          //location.href="./quiz.html";
+        }
+      }
+      function change_scene(dir) {
+        switch(dir) {
+        case 0:
+          scene --;
+          break;
+        case 1:
+          scene ++;
+          break;
+        }
+        scene = (scene + num_scenes)%num_scenes;
+        switch(scene) {
+        case 0:
+          document.getElementById('scene').src = '../../images/patio.jpg';
+          document.getElementById('sceneTitle').innerHTML = 'Patio';
+          document.getElementById('left').style.visibility = 'hidden';
+          document.getElementById('right').style.visibility = 'visible';
+          updateRate(rate[0]);
+          break;
+        case 1:
+          document.getElementById('scene').src = '../../images/kitchen.png';
+          document.getElementById('sceneTitle').innerHTML = 'Kitchen';
+          document.getElementById('right').style.visibility = 'visible';
+          document.getElementById('left').style.visibility = 'visible';
+          updateRate(rate[1]);
+          break;
+        case 2:
+          document.getElementById('scene').src = '../../images/living_room.jpg';
+          document.getElementById('sceneTitle').innerHTML = 'Living Room';
+          document.getElementById('right').style.visibility = 'hidden';
+          document.getElementById('left').style.visibility = 'visible';
+          updateRate(rate[2]);
+          break; 
+ 
+        }
+      }
+      function  updateRate(num) {
+            rate[scene] = num;
+            document.getElementById("rate5").style.background = "url(../../images/rate_off.png)";
+            document.getElementById("rate4").style.background = "url(../../images/rate_off.png)";
+            document.getElementById("rate3").style.background = "url(../../images/rate_off.png)";
+            document.getElementById("rate2").style.background = "url(../../images/rate_off.png)";
+            document.getElementById("rate1").style.background = "url(../../images/rate_off.png)";
+            switch(num) {
+            case 5:
+                document.getElementById("rate5").style.background = "url(../../images/rate_on.png)";
+            case 4:
+                document.getElementById("rate4").style.background = "url(../../images/rate_on.png)";
+            case 3:
+                document.getElementById("rate3").style.background = "url(../../images/rate_on.png)";
+            case 2:
+                document.getElementById("rate2").style.background = "url(../../images/rate_on.png)";
+            case 1:
+                document.getElementById("rate1").style.background = "url(../../images/rate_on.png)";
+            }
+        }
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>View Scene</title>
+ 
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]--> 
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script>
+      function updateUser() {
+        value = localStorage.getItem('log_status');
+        document.getElementById("navbarLoggedOut").style.display = "none";
+        document.getElementById("navbarLoggedIn").style.display = "none";
+        switch(value) {
+        case '0':
+          document.getElementById("navbarLoggedOut").style.display = "block";
+          break;
+        case '1':
+          document.getElementById("navbarLoggedIn").style.display = "block";
+          break;
+        default:
+          document.getElementById("navbarLoggedOut").style.display = "block";
+          localStorage.setItem('log_status',0);
+        }
+      }
+    </script>
+
+  </head>
+  <body onload="updateUser();prep();">
+    <div id="banner"></div>
+    <div id=navbarLoggedIn style="display:none;">
+      <nav id=main_menu class="navbar navbar-default"><div class=container>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../index.html">Dabble</a>
+        </div>
+        <div class="collapse navbar-collapse" id="nav_logged_in">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Classes</a>
+              <ul class="dropdown-menu">
+                <li><a href="../../classes/my_classes.html">My Classes</a></li>
+                <li><a href="../../classes/register.html">Register</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Scenes</a>
+              <ul class="dropdown-menu">
+                <li><a href="../../scenes/create.html">Create</a></li>
+                <li><a href="../../scenes/browse.html">Browse</a></li>
+              </ul>
+            </li>
+            <li><a href="../../progress.html">Progress</a></li>
+            <li><a href="../../contact_us.html">Contact Us</a></li>
+            <li><a onclick="localStorage.setItem('log_status', 0);" href="../../index.html">Log Out</a></li>
+          </ul>
+        </div>
+      </div></nav>
+    </div>
+    <div id=navbarLoggedOut>
+      <nav id=main_menu class="navbar navbar-default"><div class=container>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../index.html">Dabble</a>
+        </div>
+        <div class="collapse navbar-collapse" id="nav_logged_out">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../../try_it_out.html">Try it Out</a></li>
+            <li><a href="../../contact_us.html">Contact Us</a></li>
+            <li><a href="../../log_in.html">Log In</a></li>
+          </ul>
+        </div>
+      </div></nav>
+    </div>
+    <div id=content>
+    <!-- Add content here -->
+
+    <center><h1>View Scene: <span id="sceneTitle">Patio</span></h1>
+    <table>
+      <tr>
+        <td rowspan="2"><img id='left' onclick='change_scene(0)' style='visibility:hidden;' src="../../images/left.png" height="75" width="75"></td>
+        <td colspan="2"><img id='scene' onclick="find(event);" style="margin-left:10px;margin-right:10px;" src="../../images/patio.jpg" height=450 width=600></td>
+        <td rowspan="2"><img id='right' onclick='change_scene(1)' src="../../images/left.png" style="-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:'FlipH';-ms-filter:'FlipH';" height="75" width="75"></td>
+      </tr>
+      <tr>
+        <td style="margin-left:10px;margin-right:10px;text-align:left;">
+          <input type="submit" onClick='vocab_list()' value="Vocabulary Left" style="margin:5px;">
+        </td>
+        <td style="margin-left:10px;margin-right:10px;text-align:right;">
+          <input onclick="take_quiz()" type="submit" value="Take Quiz" style="margin:5px;">
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td width="175" style="text-align: right;">Rate this Scene:</td>
+        <td width="275">
+          <center><table><tr>
+            <td id="rate1" onclick=updateRate(1);></td>
+            <td id="fill"></td>
+            <td id="rate2" onclick=updateRate(2);></td>
+            <td id="fill"></td>
+            <td id="rate3" onclick=updateRate(3);></td>
+            <td id="fill"></td>
+            <td id="rate4" onclick=updateRate(4);></td>
+            <td id="fill"></td>
+            <td id="rate5" onclick=updateRate(5);></td>
+          </tr></table></center>
+        </td>
+      </tr>
+    </table>
+    </center>
+
+    <div id=footer></div>
+
+
+    <style>
+      #rate1, #rate2, #rate3, #rate4, #rate5 {
+        background: url(../../images/rate_off.png);
+        width: 20px;
+        height: 20px;
+      }
+      #fill {
+        background-color: white;
+        width: 10px;
+        height: 20px;
+      }
+    </style>
+
+    <script>
+ $(document).ready(function () {
+
+    $('#scene').on('click', function(e){
+          image = $('img#scene');
+
+          x = e.pageX - image.offset().left;
+          y = e.pageY - image.offset().top;
+          console.log(x + ", " + y);
+
+          console.log("Scene " + scene);
+          if(scene == 0) {
+            if( ((x < 250 && x > 100) && (y < 300 && y > 200)) || ((x >250 && x < 450) && (y > 220 && y < 430))) {
+              alert("Escalera:: Stairs");
+              found[0] = true;
+            }
+	  }
+
+          if(scene == 1) {
+            if(((x > 200 && x < 330) && (y > 280 && y < 405))) {
+              alert("Horno:: Oven");
+              found[1][0] = true;
+            }
+            if(((x > 460 && x < 550) && (y > 280 && y < 300))) {
+              alert("Lavabo:: Sink");
+              found[1][1] = true;
+            } 
+          }
+
+          if (scene == 2) {
+            if(((x > 210 && x < 275) && (y > 200 && y < 260)) || ((x > 340 && x < 385)&& (y > 200 && y < 260))) {
+              alert("Almohada:: Pillow");
+              found[2] = true;
+            }
+
+          }
+
+    });
+});
+
+    </script>
+
+
+  </body>
+</html>
