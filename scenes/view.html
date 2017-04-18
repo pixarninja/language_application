@@ -6,11 +6,10 @@
     </script>
     <script>
       rate = [0, 0, 0];
-      found = [false, false, false];
+      found = [false, [false, false], false];
       scene = 0;
       num_scenes = 3;
       function find(event) {
-        //console.log(event);
 
 	// This is covered at the bottom of the page
       }
@@ -24,18 +23,18 @@
           alert("Vocabulary left to find: Escalera");
           break;
         case 1:
-          alert("Vocabulary left to find: Horno");
+          alert("Vocabulary left to find: Horno and Lavabo");
           break;
         case 2:
           alert("Vocabulary left to find: Almohada");
         }
       }
       function take_quiz() {
-        if (found[0] == false || found [1] == false || found[2] == false) {
+        if (found[0] == false || found [1][0] == false || found[1][1] == false || found[2] == false) {
           alert("You have not found all of the vocabulary to continue.");
         }
 	else {
-          location.href="./quiz.html";
+          //location.href="./quiz.html";
         }
       }
       function change_scene(dir) {
@@ -262,8 +261,12 @@
           if(scene == 1) {
             if(((x > 200 && x < 330) && (y > 280 && y < 405))) {
               alert("Horno:: Oven");
-              found[1] = true;
+              found[1][0] = true;
             }
+            if(((x > 460 && x < 550) && (y > 280 && y < 300))) {
+              alert("Lavabo:: Sink");
+              found[1][1] = true;
+            } 
           }
 
           if (scene == 2) {
