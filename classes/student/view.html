@@ -18,9 +18,24 @@
       }
 
       function vocab_list() {
+        document.getElementById("error_text").innerHTML = "";
+        document.getElementById("display_text").innerHTML = "";
         switch(scene) {
         case 0:
-          alert("Vocabulary to find: Gabinete, Horno, Pintura, Luz, Mesa");
+          insert = "<b>Vocabulary Left to find</b>: <br/>";
+          if(!found[0][0])
+            insert +=" El Horno; ";
+          if(!found[0][1])
+            insert +=" La Luz; ";
+          if(!found[0][2])
+            insert +=" Los Gabinetes; ";
+          if(!found[0][3])
+            insert +=" La Pintura; ";
+          if(!found[0][4])
+            insert +=" La Mesa; ";
+          
+          document.getElementById("display_text").innerHTML = insert;
+          //alert(insert);
           break;
         case 1:
           alert("Vocabulary left to find: ");
@@ -28,14 +43,19 @@
         }
       }
       function take_quiz() {
+        document.getElementById("error_text").innerHTML = "";
+        document.getElementById("display_text").innerHTML = "";
         if ((found[0][0] && found[0][1] && found[0][2] && found[0][3] && found[0][4]) == false) {
-          alert("You have not found all of the vocabulary to continue.");
+          //alert("You have not found all of the vocabulary to continue.");
+          document.getElementById("error_text").innerHTML = "Error! You have not found all of the needed vocabulary to continue.";
         }
 	else {
           location.href="./quiz.html";
         }
       }
       function change_scene(dir) {
+        document.getElementById("display_text").innerHTML = "";
+        document.getElementById("error_text").innerHTML = "";
         switch(dir) {
         case 0:
           scene --;
@@ -196,6 +216,9 @@
         </td>
       </tr>
       <tr> <td></td>
+        <td colspan="2" id="error_text" style="background:#FAA;text-align:center;font-weight:bold;"></td>
+      </tr>
+      <tr> <td></td>
         <td colspan="2" id="display_text" style="background:#EEC"></td>
       </tr>
       <tr>
@@ -240,30 +263,37 @@
     $('#scene').on('click', function(e){
           image = $('img#scene');
 
+          document.getElementById("error_text").innerHTML = "";
+          document.getElementById("display_text").innerHTML = "";
           x = e.pageX - image.offset().left;
           y = e.pageY - image.offset().top;
           console.log(x + ", " + y);
 
           console.log("Scene " + scene);
           if(scene == 0) {
-            if((x < 340 && x > 190) && (y < 330 && y > 190)) {
-              alert("Horno:: Oven");
+            if((x < 340 && x > 190) && (y < 330 && y > 190)) { 
+              document.getElementById("display_text").innerHTML = "[Espa&ntilde;ol] El Horno:: [English] The Oven";
+             // alert("Horno:: Oven");
               found[0][0] = true;
             }
             else if((x < 320 && x > 200) && (y < 95 && y > 75)) {
-              alert("Luz::Light");
+              document.getElementById("display_text").innerHTML = "[Espa&ntilde;ol] La Luz:: [English] The Light";
+             // alert("Luz::Light");
               found[0][1] = true;
             }
             else if (((x > 10 && x < 200) && (y > 0 && y < 130)) || ((x > 335 && x < 525) && (y > 0 && y < 130))) {
-              alert("Gabinete:: Cabinets");
+              document.getElementById("display_text").innerHTML = "[Espa&ntilde;ol] Los Gabinetes:: [English] The Cabinets";
+             // alert("Gabinete:: Cabinets");
               found[0][2] = true;
             }
             else if ((x < 600 && x > 540) && (y < 130 && y > 20)) {
-              alert("Pintura:: Picture");
+              document.getElementById("display_text").innerHTML = "[Espa&ntilde;ol] La Pintura:: [English] The Painting";
+             // alert("Pintura:: Picture");
               found[0][3] = true;
             }
             else if ((x < 570 && x > 130) && (y < 410 && y > 340)) {
-              alert("Mesa:: Table");
+              document.getElementById("display_text").innerHTML = "[Espa&ntilde;ol] La Mesa:: [English] The Table";
+             // alert("Mesa:: Table");
               found[0][4] = true;
             }
 	  }
@@ -279,13 +309,6 @@
             } 
           }
 
-          if (scene == 2) {
-            if(((x > 210 && x < 275) && (y > 200 && y < 260)) || ((x > 340 && x < 385)&& (y > 200 && y < 260))) {
-              alert("Almohada:: Pillow");
-              found[2] = true;
-            }
-
-          }
 
     });
 });
