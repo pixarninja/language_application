@@ -5,10 +5,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     </script>
     <script>
-      rate = [0, 0, 0];
-      found = [false, [false, false], false];
+      rate = [0, 0];
+      found = [[false, false, false, false, false], false];
       scene = 0;
-      num_scenes = 3;
+      num_scenes = 2;
       function find(event) {
 
 	// This is covered at the bottom of the page
@@ -20,21 +20,19 @@
       function vocab_list() {
         switch(scene) {
         case 0:
-          alert("Vocabulary left to find: Escalera");
+          alert("Vocabulary to find: Gabinete, Horno, Pintura, Luz, Mesa");
           break;
         case 1:
-          alert("Vocabulary left to find: Horno and Lavabo");
+          alert("Vocabulary left to find: ");
           break;
-        case 2:
-          alert("Vocabulary left to find: Almohada");
         }
       }
       function take_quiz() {
-        if (found[0] == false || found [1][0] == false || found[1][1] == false || found[2] == false) {
+        if ((found[0][0] && found[0][1] && found[0][2] && found[0][3] && found[0][4]) == false) {
           alert("You have not found all of the vocabulary to continue.");
         }
 	else {
-          //location.href="./quiz.html";
+          location.href="./quiz.html";
         }
       }
       function change_scene(dir) {
@@ -49,8 +47,8 @@
         scene = (scene + num_scenes)%num_scenes;
         switch(scene) {
         case 0:
-          document.getElementById('scene').src = '../../images/patio.jpg';
-          document.getElementById('sceneTitle').innerHTML = 'Patio';
+          document.getElementById('scene').src = '../../images/KitchenScene.png';
+          document.getElementById('sceneTitle').innerHTML = 'Kitchen';
           document.getElementById('left').style.visibility = 'hidden';
           document.getElementById('right').style.visibility = 'visible';
           updateRate(rate[0]);
@@ -58,17 +56,10 @@
         case 1:
           document.getElementById('scene').src = '../../images/kitchen.png';
           document.getElementById('sceneTitle').innerHTML = 'Kitchen';
-          document.getElementById('right').style.visibility = 'visible';
+          document.getElementById('right').style.visibility = 'hidden';
           document.getElementById('left').style.visibility = 'visible';
           updateRate(rate[1]);
           break;
-        case 2:
-          document.getElementById('scene').src = '../../images/living_room.jpg';
-          document.getElementById('sceneTitle').innerHTML = 'Living Room';
-          document.getElementById('right').style.visibility = 'hidden';
-          document.getElementById('left').style.visibility = 'visible';
-          updateRate(rate[2]);
-          break; 
  
         }
       }
@@ -100,8 +91,8 @@
     <title>View Scene</title>
  
     <!-- Bootstrap -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/main.css" rel="stylesheet">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/main.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -111,7 +102,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
     <script>
       function updateUser() {
         value = localStorage.getItem('log_status');
@@ -189,11 +180,11 @@
     <div id=content>
     <!-- Add content here -->
 
-    <center><h1>View Scene: <span id="sceneTitle">Patio</span></h1>
+    <center><h1>View Scene: <span id="sceneTitle">Kitchen</span></h1>
     <table>
       <tr>
         <td rowspan="2"><img id='left' onclick='change_scene(0)' style='visibility:hidden;' src="../../images/left.png" height="75" width="75"></td>
-        <td colspan="2"><img id='scene' onclick="find(event);" style="margin-left:10px;margin-right:10px;" src="../../images/patio.jpg" height=450 width=600></td>
+        <td colspan="2"><img id='scene' onclick="find(event);" style="margin-left:10px;margin-right:10px;" src="../../images/KitchenScene.png" height=450 width=600></td>
         <td rowspan="2"><img id='right' onclick='change_scene(1)' src="../../images/left.png" style="-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:'FlipH';-ms-filter:'FlipH';" height="75" width="75"></td>
       </tr>
       <tr>
@@ -203,6 +194,9 @@
         <td style="margin-left:10px;margin-right:10px;text-align:right;">
           <input onclick="take_quiz()" type="submit" value="Take Quiz" style="margin:5px;">
         </td>
+      </tr>
+      <tr> <td></td>
+        <td colspan="2" id="display_text" style="background:#EEC"></td>
       </tr>
       <tr>
         <td></td>
@@ -252,9 +246,25 @@
 
           console.log("Scene " + scene);
           if(scene == 0) {
-            if( ((x < 250 && x > 100) && (y < 300 && y > 200)) || ((x >250 && x < 450) && (y > 220 && y < 430))) {
-              alert("Escalera:: Stairs");
-              found[0] = true;
+            if((x < 340 && x > 190) && (y < 330 && y > 190)) {
+              alert("Horno:: Oven");
+              found[0][0] = true;
+            }
+            else if((x < 320 && x > 200) && (y < 95 && y > 75)) {
+              alert("Luz::Light");
+              found[0][1] = true;
+            }
+            else if (((x > 10 && x < 200) && (y > 0 && y < 130)) || ((x > 335 && x < 525) && (y > 0 && y < 130))) {
+              alert("Gabinete:: Cabinets");
+              found[0][2] = true;
+            }
+            else if ((x < 600 && x > 540) && (y < 130 && y > 20)) {
+              alert("Pintura:: Picture");
+              found[0][3] = true;
+            }
+            else if ((x < 570 && x > 130) && (y < 410 && y > 340)) {
+              alert("Mesa:: Table");
+              found[0][4] = true;
             }
 	  }
 
