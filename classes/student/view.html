@@ -8,7 +8,7 @@
       rate = [0, 0];
       found = [[false, false, false, false, false], false];
       scene = 0;
-      num_scenes = 2;
+      num_scenes = 1;
       function find(event) {
 
 	// This is covered at the bottom of the page
@@ -70,7 +70,7 @@
           document.getElementById('scene').src = '../../images/KitchenScene.png';
           document.getElementById('sceneTitle').innerHTML = 'Kitchen';
           document.getElementById('left').style.visibility = 'hidden';
-          document.getElementById('right').style.visibility = 'visible';
+          document.getElementById('right').style.visibility = 'hidden';
           updateRate(rate[0]);
           break;
         case 1:
@@ -208,7 +208,7 @@
       <tr>
         <td rowspan="2"><img id='left' onclick='change_scene(0)' style='visibility:hidden;' src="../../images/left.png" height="75" width="75"></td>
         <td colspan="2"><img id='scene' onclick="find(event);" style="margin-left:10px;margin-right:10px;" src="../../images/KitchenScene.png" height=450 width=600></td>
-        <td rowspan="2"><img id='right' onclick='change_scene(1)' src="../../images/left.png" style="-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:'FlipH';-ms-filter:'FlipH';" height="75" width="75"></td>
+        <td rowspan="2"><img id='right' onclick='change_scene(1)' src="../../images/left.png" style="visibility:hidden;-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:'FlipH';-ms-filter:'FlipH';" height="75" width="75"></td>
       </tr>
       <tr>
         <td style="margin-left:10px;margin-right:10px;text-align:left;">

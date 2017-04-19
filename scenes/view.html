@@ -18,26 +18,44 @@
       }
 
       function vocab_list() {
+        document.getElementById("display_text").innerHTML = "";
+        document.getElementById("error_text").innerHTML = "";
+        text = ""
         switch(scene) {
         case 0:
-          alert("Vocabulary left to find: Escalera");
+          if(found[0] == false)
+            text = "Vocabulary left to find:<br/> La Escalera;";
+          else
+            text = "No new vocabulary to find.";
           break;
         case 1:
-          alert("Vocabulary left to find: Horno and Lavabo");
+          text = "Vocabulary left to find: <br/>";
+          if(found[1][0] == false)
+            text += "El Horno; ";
+          if(found[1][1] == false)
+            text += "El Lavabo; "
           break;
         case 2:
-          alert("Vocabulary left to find: Almohada");
+          if(found[2] == false)
+            text = ("Vocabulary left to find: La Almohada");
+          else
+            text = "No new vocabulary to find.";
         }
+        document.getElementById("display_text").innerHTML = text;
       }
       function take_quiz() {
+        document.getElementById("display_text").innerHTML = "";
+        document.getElementById("error_text").innerHTML = "";
         if (found[0] == false || found [1][0] == false || found[1][1] == false || found[2] == false) {
-          alert("You have not found all of the vocabulary to continue.");
+          document.getElementById("error_text").innerHTML = ("You have not found all of the vocabulary to continue.");
         }
 	else {
-          //location.href="./quiz.html";
+          document.getElementById("display_text").innerHTML = "There is no quiz for this session.";
         }
       }
       function change_scene(dir) {
+        document.getElementById("display_text").innerHTML = "";
+        document.getElementById("error_text").innerHTML = "";
         switch(dir) {
         case 0:
           scene --;
@@ -204,11 +222,11 @@
           <input onclick="take_quiz()" type="submit" value="Take Quiz" style="margin:5px;">
         </td>
       <tr>
-        <td></td><td colspan=2 style="background:#faa" id="error_text">test</td>
+        <td></td><td colspan=2 style="background:#faa" id="error_text"></td>
       </tr>
       </tr>
       <tr>
-        <td></td><td colspan=2 style="background:#eec" id="display_text">test</td>
+        <td></td><td colspan=2 style="background:#eec" id="display_text"></td>
       </tr>
       <tr>
         <td></td>
@@ -252,6 +270,8 @@
     $('#scene').on('click', function(e){
           image = $('img#scene');
 
+          document.getElementById("display_text").innerHTML = "";
+          document.getElementById("error_text").innerHTML = "";
           x = e.pageX - image.offset().left;
           y = e.pageY - image.offset().top;
           console.log(x + ", " + y);
@@ -259,25 +279,25 @@
           console.log("Scene " + scene);
           if(scene == 0) {
             if( ((x < 250 && x > 100) && (y < 300 && y > 200)) || ((x >250 && x < 450) && (y > 220 && y < 430))) {
-              alert("Escalera:: Stairs");
+              document.getElementById("display_text").innerHTML=("[Espa&ntilde;ol]La Escalera:: [English]The Stairs");
               found[0] = true;
             }
 	  }
 
           if(scene == 1) {
             if(((x > 200 && x < 330) && (y > 280 && y < 405))) {
-              alert("Horno:: Oven");
+              document.getElementById("display_text").innerHTML = ("[Espa&ntilde;ol]El Horno:: [English]The Oven");
               found[1][0] = true;
             }
             if(((x > 460 && x < 550) && (y > 280 && y < 300))) {
-              alert("Lavabo:: Sink");
+              document.getElementById('display_text').innerHTML = "[Espa&ntilde;ol]El Lavabo:: [English] The Sink";
               found[1][1] = true;
             } 
           }
 
           if (scene == 2) {
             if(((x > 210 && x < 275) && (y > 200 && y < 260)) || ((x > 340 && x < 385)&& (y > 200 && y < 260))) {
-              alert("Almohada:: Pillow");
+              document.getElementById('display_text').innerHTML = ("[Espa&ntilde;ol]La Almohada:: [English]The Pillow");
               found[2] = true;
             }
 
