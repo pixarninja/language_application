@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link href="../css/other.css" rel="stylesheet">
-
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Create Scene</title>
+    <title>Classes Overview</title>
  
     <!-- Bootstrap -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -22,16 +19,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../js/bootstrap.min.js"></script>
+    <link href="../css/other.css" rel="stylesheet">
     <script>
-      user = localStorage.getItem('username');
-      if(user == "teststudent")
-        location.href ="./error.html";
-      truev = [];
-      vocab = [];
-      vocab[0] = "NONE";
-      truev[0] = "NONE";
-      function updateUser() {
-       value = localStorage.getItem('log_status');
+     function updateUser() {
+        value = localStorage.getItem('log_status');
         document.getElementById("navbarLoggedOut").style.display = "none";
         document.getElementById("navbarLoggedIn").style.display = "none";
         switch(value) {
@@ -46,19 +37,7 @@
           localStorage.setItem('log_status',0);
         }
       }
-      function deltaVocab(num) {
-        tmp = confirm("The current vocab is " + vocab[num] + ": " + truev[num] + ". Would you like to change it?");
-        console.log(tmp);
-        while ( tmp == true) {
-          tmp2 = prompt("Enter the new vocabulary word (english):");
-          vocab[num] = tmp2;
-          tmp2 = prompt("Enter the new vocabulary word (spanish):");
-          truev[num] = tmp2;
-          tmp = confirm("The current vocab is " + vocab[num] + ": " + truev[num] +  ". Would you like to change it?");
-        }
-      }
     </script>
-
   </head>
   <body onload="updateUser()">
     <div id="banner"></div>
@@ -116,104 +95,16 @@
     </div>
     <div id=content>
     <!-- Add content here -->
-
-    <center><h1>Create Scene</span></h1>
-
-    <table>
-      <tr>
-        <td colspan="3"><div style="border:2px solid black;">
-        <svg xmlns:svg="http://www.w3.org/2000/svg"
-             xmlns="http://www.w3.org/2000/svg"
-             version="1.1"
-             width="600"
-             height="450"
-             >
-            
-            <style>
-              .draggable {
-                cursor: move;
-              }
-            </style>
-            
-            <script type="text/ecmascript"><![CDATA[
-            var selectedElement = 0;
-            var currentX = 0;
-            var currentY = 0;
-            var currentMatrix = 0;
-        
-            function selectElement(evt) {
-              selectedElement = evt.target;
-              currentX = evt.clientX;
-              currentY = evt.clientY;
-              currentMatrix = selectedElement.getAttributeNS(null, "transform").slice(7,-1).split(' ');
-            
-              for(var i=0; i<currentMatrix.length; i++) {
-                currentMatrix[i] = parseFloat(currentMatrix[i]);
-              }
-              
-              selectedElement.setAttributeNS(null, "onmousemove", "moveElement(evt)");
-              selectedElement.setAttributeNS(null, "onmouseout", "deselectElement(evt)");
-              selectedElement.setAttributeNS(null, "onmouseup", "deselectElement(evt)");
-            }
-                
-            function moveElement(evt) {
-              var dx = evt.clientX - currentX;
-              var dy = evt.clientY - currentY;
-              currentMatrix[4] += dx;
-              currentMatrix[5] += dy;
-              
-              selectedElement.setAttributeNS(null, "transform", "matrix(" + currentMatrix.join(' ') + ")");
-              currentX = evt.clientX;
-              currentY = evt.clientY;
-            }
-                
-            function deselectElement(evt) {
-              if(selectedElement != 0){
-                  selectedElement.removeAttributeNS(null, "onmousemove");
-                  selectedElement.removeAttributeNS(null, "onmouseout");
-                  selectedElement.removeAttributeNS(null, "onmouseup");
-                  selectedElement = 0;
-                  }
-                }
-                
-            ]]> </script>
-            <image ondblclick="deltaVocab(0);" class="draggable" x="100" y="200" height="100" transform="matrix(1 0 0 1 0 0)" xlink:href="sofa.png" onmousedown="selectElement(evt)">     
-                 
-        </svg>
-
-
-
-        </div>
-        </td>
-      </tr>
-      <tr>
-        <td style="margin-left:10px;margin-right:10px;text-align:left;width:180px;"><center>
-          <input type="submit" value="Add Object" style="margin:5px;">
-        </center></td>
-        <td style="margin-left:10px;margin-right:10px;text-align:left;width:180px;"><center>
-          <input type="submit" value="Name Scene" style="margin:5px;">
-        </center></td>
-        <td style="margin-left:10px;margin-right:10px;text-align:right;width:180px;"><center>
-          <input type="submit" value="Save" style="margin:5px;">
-        </center></td>
-      </tr>
-    </table>
+    <center>
+    <h1>Error</h1>
+<p>As a student, you do not have access to that page</p>
     </center>
 
 
 
 
-    </div><br/><br/>
+
+    </div>
     <div id=footer></div>
-
-
-    <style>
-      #rate1, #rate2, #rate3, #rate4, #rate5 {
-        border:1px black solid;
-        background-color: white;
-        width: 40px;
-        height: 20px;
-      }
-    </style>
   </body>
 </html>
