@@ -55,7 +55,11 @@
           output += "Good job!<br/>";
         else
           output += "Keep up the hard work; you can get this next time!<br/>";
+          output +="<button onclick='eval();'>Return to Evaluation</button>";
         document.getElementById("quiz").innerHTML = output;
+      }
+      function eval() {
+        location.href="https://www.cs.nmt.edu/~kerickso/HCI_Spring2017_Website/demo.html";
       }
     </script>
   </head>
